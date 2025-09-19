@@ -23,13 +23,13 @@ type Config struct {
 func LoadConfig() Config {
 	conf, err := os.ReadFile("./config.json")
 	if err != nil {
-		log.Fatal("failed to read config: " + err.Error())
+		log.Fatalf("failed to read config: %v", err)
 	}
 
 	var cfg Config
 	err = json.Unmarshal(conf, &cfg)
 	if err != nil {
-		log.Fatal("failed to unmarshal json: " + err.Error())
+		log.Fatalf("failed to unmarshal json: %v", err)
 	}
 
 	return cfg
