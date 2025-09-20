@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/eliva1e/clover/internal"
+	"github.com/eliva1e/clover/internal/assets"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -17,7 +18,7 @@ func main() {
 	cfg = internal.LoadConfig("config.json")
 
 	var err error
-	tmpl, err = template.ParseFiles("templates/profile.html")
+	tmpl, err = template.New("profile").Parse(assets.ProfileTemplate)
 	if err != nil {
 		log.Fatalf("failed to parse templates: %v", err)
 	}
@@ -34,7 +35,7 @@ func main() {
 }
 
 func profileHandler(w http.ResponseWriter, r *http.Request) {
-	if err := tmpl.ExecuteTemplate(w, "profile.html", cfg); err != nil {
+	if err := tmpl.ExecuteTemplate(w, "profile", cfg); err != nil {
 		log.Fatalf("failed to execute template: %v", err)
 	}
 }

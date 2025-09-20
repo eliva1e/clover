@@ -8,7 +8,10 @@ import (
 	"os"
 	"strings"
 
+	_ "embed"
+
 	"github.com/eliva1e/clover/internal"
+	"github.com/eliva1e/clover/internal/assets"
 )
 
 func main() {
@@ -22,13 +25,13 @@ func main() {
 
 	cfg := internal.LoadConfig(*configPath)
 
-	tmpl, err := template.ParseFiles("templates/profile.html")
+	tmpl, err := template.New("profile").Parse(assets.ProfileTemplate)
 	if err != nil {
 		fmt.Printf("failed to parse templates: %v", err)
 	}
 
 	var html bytes.Buffer
-	if err := tmpl.ExecuteTemplate(&html, "profile.html", cfg); err != nil {
+	if err := tmpl.ExecuteTemplate(&html, "profile", cfg); err != nil {
 		fmt.Printf("failed to execute template: %v", err)
 	}
 
