@@ -22,7 +22,6 @@ func main() {
 	}
 
 	r := chi.NewRouter()
-	r.Use(middleware.RequestID)
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
@@ -45,7 +44,6 @@ func symlinkHandler(w http.ResponseWriter, r *http.Request) {
 
 	for _, link := range cfg.Links {
 		if link.Symlink == symlink {
-			log.Printf("Redirected from symlink `%s` to url `%s`", symlink, link.Url)
 			http.Redirect(w, r, link.Url, http.StatusSeeOther)
 			return
 		}

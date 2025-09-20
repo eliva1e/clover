@@ -7,9 +7,12 @@ import (
 )
 
 type Link struct {
-	Name    string `json:"name"`
-	Url     string `json:"url"`
-	Symlink string `json:"symlink"`
+	IsLabel    bool   `json:"isLabel"`
+	Name       string `json:"name"`
+	Url        string `json:"url"`
+	Symlink    string `json:"symlink"`
+	Background string `json:"background"`
+	Foreground string `json:"foreground"`
 }
 
 type Config struct {

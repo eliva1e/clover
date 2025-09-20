@@ -3,13 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/static/assets/css/main.css">
+  <link rel="stylesheet" href="/static/css/profile.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <title>{{.Name}}</title>
 </head>
 <body>
-  Hello world
+  <a href="#">
+    <img src="{{.Avatar}}" alt="{{.Name}}" class="avatar">
+  </a>
+
+  <h1 class="name">{{.Name}}</h1>
+  <p class="bio">{{.Bio}}</p>
+
+  <div class="objects">
+    {{range .Links}}
+      {{if .IsLabel}}
+        <span class="label">{{.Name}}</span>
+      {{else}}
+        <a
+          href="{{.Url}}"
+          target="_blank"
+          class="button"
+          style="background-color: {{.Background}}; color: {{.Foreground}}"
+        >
+          {{.Name}}
+        </a>
+      {{end}}
+    {{end}}
+  </div>
 </body>
 </html>
