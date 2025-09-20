@@ -1,4 +1,4 @@
-package main
+package internal
 
 import (
 	"encoding/json"
@@ -23,8 +23,8 @@ type Config struct {
 	Links   []Link `json:"links"`
 }
 
-func LoadConfig() Config {
-	conf, err := os.ReadFile("./config.json")
+func LoadConfig(path string) Config {
+	conf, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalf("failed to read config: %v", err)
 	}

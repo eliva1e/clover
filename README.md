@@ -45,5 +45,5 @@ $ docker run -d -p 80:80 -v ./config.json:/clover/config.json --name clover eliv
 
 ## TODO
 
-1. Command line utility for generating static profile page from config.
-2. Icons for the buttons.
+1. Icons for the buttons
+2. SSL certificate support

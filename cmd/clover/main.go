@@ -1,19 +1,20 @@
 package main
 
 import (
+	"html/template"
 	"log"
 	"net/http"
-	"html/template"
 
+	"github.com/eliva1e/clover/internal"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-var cfg Config
+var cfg internal.Config
 var tmpl *template.Template
 
 func main() {
-	cfg = LoadConfig()
+	cfg = internal.LoadConfig("config.json")
 
 	var err error
 	tmpl, err = template.ParseFiles("templates/profile.html")
@@ -27,7 +28,6 @@ func main() {
 
 	r.Get("/", profileHandler)
 	r.Get("/{symlink}", symlinkHandler)
-	r.Handle("/static/*", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	log.Printf("Starting Clover on %s", cfg.Address)
 	log.Fatal(http.ListenAndServe(cfg.Address, r))
