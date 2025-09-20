@@ -9,7 +9,9 @@ Easy to run and use, self-hosted web profile & link shortener
 </div>
 
 ## Configuration
+
 Typical `config.json` file looks like this:
+
 ```jsonc
 {
   "address": ":80",
@@ -36,13 +38,12 @@ Typical `config.json` file looks like this:
 ```
 
 ## Run using Docker
+
 ```sh
-$ docker run \
-  -p 80:80 \
-  -v ./config.json:/clover/config.json \ # your config file
-  eliva1e/clover
+$ docker run -d -p 80:80 -v ./config.json:/clover/config.json --name clover eliva1e/clover
 ```
 
 ## TODO
+
 1. Command line utility for generating static profile page from config.
 2. Icons for the buttons.

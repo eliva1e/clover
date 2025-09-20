@@ -1,5 +1,5 @@
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   margin: 0;
   background-color: #d7d7d7;
   color: #0e0e0e;
@@ -11,7 +11,8 @@ body {
   animation: 1.5s fade-in;
 }
 
-h1, p {
+h1,
+p {
   margin: 0;
 }
 
@@ -93,7 +94,7 @@ h1, p {
 @media (prefers-color-scheme: dark) {
   body {
     background-color: #272727;
-    color: #d7d7d7;;
+    color: #d7d7d7;
   }
 
   .bio {
