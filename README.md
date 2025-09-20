@@ -57,3 +57,4 @@ $ ./clover_cli -config <path-to-config>
 
 1. Icons for the buttons
 2. SSL certificate support
+3. Use default net/http instead of chi

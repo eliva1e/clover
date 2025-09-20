@@ -4,13 +4,11 @@ WORKDIR /usr/src/app
 COPY . .
 
 RUN go mod download
-RUN go build -o clover
+RUN go build -v -o clover ./cmd/clover/main.go
 
 FROM alpine
 WORKDIR /clover
 
-COPY ./static ./static
-COPY ./templates ./templates
 COPY --from=builder /usr/src/app/clover .
 
 EXPOSE 80
