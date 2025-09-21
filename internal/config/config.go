@@ -6,7 +6,12 @@ import (
 	"os"
 )
 
-type Link struct {
+type TlsConfig struct {
+	PublicKey  string `json:"publicKey"`
+	PrivateKey string `json:"privateKey"`
+}
+
+type Object struct {
 	IsLabel    bool   `json:"isLabel"`
 	Name       string `json:"name"`
 	Url        string `json:"url"`
@@ -16,11 +21,12 @@ type Link struct {
 }
 
 type Config struct {
-	Address string `json:"address"`
-	Avatar  string `json:"avatar"`
-	Name    string `json:"name"`
-	Bio     string `json:"bio"`
-	Links   []Link `json:"links"`
+	Address string     `json:"address"`
+	Tls     *TlsConfig `json:"tls"`
+	Avatar  string     `json:"avatar"`
+	Name    string     `json:"name"`
+	Bio     string     `json:"bio"`
+	Objects []Object   `json:"objects"`
 }
 
 func LoadConfig(path string) Config {

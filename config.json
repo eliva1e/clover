@@ -1,9 +1,13 @@
 {
-  "address": ":80",
+  "address": ":443",
+  "tls": {
+    "publicKey": "./server.crt",
+    "privateKey": "./server.key"
+  },
   "avatar": "https://github.com/eliva1e.png",
   "name": "Elivale",
   "bio": "i am human",
-  "links": [
+  "objects": [
     {
       "isLabel": true,
       "name": "SOCIAL"

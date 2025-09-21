@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/eliva1e/clover/internal/config"
 	"github.com/eliva1e/clover/internal/assets"
+	"github.com/eliva1e/clover/internal/config"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
@@ -31,7 +31,11 @@ func main() {
 	r.Get("/{symlink}", symlinkHandler)
 
 	log.Printf("Starting Clover on %s", cfg.Address)
-	log.Fatal(http.ListenAndServe(cfg.Address, r))
+	if cfg.Tls == nil {
+		log.Fatal(http.ListenAndServe(cfg.Address, r))
+	} else {
+		log.Fatal(http.ListenAndServeTLS(cfg.Address, cfg.Tls.PublicKey, cfg.Tls.PrivateKey, r))
+	}
 }
 
 func profileHandler(w http.ResponseWriter, r *http.Request) {
@@ -43,9 +47,9 @@ func profileHandler(w http.ResponseWriter, r *http.Request) {
 func symlinkHandler(w http.ResponseWriter, r *http.Request) {
 	symlink := r.PathValue("symlink")
 
-	for _, link := range cfg.Links {
-		if link.Symlink == symlink {
-			http.Redirect(w, r, link.Url, http.StatusSeeOther)
+	for _, obj := range cfg.Objects {
+		if obj.Symlink == symlink {
+			http.Redirect(w, r, obj.Url, http.StatusSeeOther)
 			return
 		}
 	}
