@@ -30,11 +30,19 @@ func main() {
 	r.Get("/", profileHandler)
 	r.Get("/{symlink}", symlinkHandler)
 
-	log.Printf("Starting Clover on %s", cfg.Address)
 	if cfg.EnableTls {
-		log.Fatal(http.ListenAndServeTLS(cfg.Address, "server.crt", "server.key", r))
+		go func() {
+			log.Fatal(http.ListenAndServe(":80", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+				target := "https://" + r.Host + r.URL.RequestURI()
+				http.Redirect(w, r, target, http.StatusMovedPermanently)
+			})))
+		}()
+
+		log.Printf("Starting Clover on port 443 (w/ TLS)")
+		log.Fatal(http.ListenAndServeTLS(":443", "server.crt", "server.key", r))
 	} else {
-		log.Fatal(http.ListenAndServe(cfg.Address, r))
+		log.Printf("Starting Clover on port 80")
+		log.Fatal(http.ListenAndServe(":80", r))
 	}
 }
 
