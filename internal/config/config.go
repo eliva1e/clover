@@ -17,7 +17,6 @@ type Object struct {
 }
 
 type Config struct {
-	Address   string   `json:"address"`
 	EnableTls bool     `json:"enableTls"`
 	Avatar    string   `json:"avatar"`
 	Name      string   `json:"name"`

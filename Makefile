@@ -7,3 +7,6 @@ cli:
 
 image:
 	docker build -t eliva1e/clover --platform linux/amd64,linux/arm64 .
+
+push: image
+	docker push eliva1e/clover

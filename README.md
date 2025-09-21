@@ -61,7 +61,7 @@ $ docker run -d \
 
 ## Static page
 
-You can generate static HTML page to use it in any hosting service (e.g. Vercel, GitHub Pages, nginx) using Clover CLI. Please note that URL shortener won't work with static page.
+You can generate static HTML page to use it in any hosting service (e.g. Vercel, GitHub Pages, nginx) using Clover CLI.
 
 Download the latest Clover CLI from [Releases](https://github.com/eliva1e/clover/releases) and run:
 
@@ -71,4 +71,4 @@ $ ./clover_cli -config <path-to-config>
 
 ## TODO
 
-1. Add URL shortener for static page
+1. Better config style

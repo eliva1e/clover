@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <title>Redirecting...</title>
+</head>
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #e2e2e2;
+    color: #0e0e0e;
+    display: flex;
+    margin: 2rem 1rem;
+    justify-content: center;
+    animation: 1.5s fade-in;
+  }
+
+  .wrapper {
+    max-width: 30rem;
+    background-color: #f1f1f1;
+    border-radius: 12px;
+    padding: 2rem;
+    font-weight: 600;
+  }
+
+  @keyframes fade-in {
+    0% {
+      transform: translateY(-2rem);
+      opacity: 0;
+    }
+  }
+</style>
+<body>
+  <div class="wrapper">
+    Redirecting to {{.Name}}...
+  </div>
+
+  <script>
+    window.location.href = '{{.Url}}';
+  </script>
+</body>
+</html>
