@@ -25,7 +25,7 @@ type Config struct {
 	Objects   []Object `json:"objects"`
 }
 
-func LoadConfig(path string) Config {
+func LoadConfig(path string) *Config {
 	conf, err := os.ReadFile(path)
 	if err != nil {
 		log.Fatalf("failed to read config: %v", err)
@@ -37,5 +37,5 @@ func LoadConfig(path string) Config {
 		log.Fatalf("failed to unmarshal json: %v", err)
 	}
 
-	return cfg
+	return &cfg
 }

@@ -71,5 +71,4 @@ $ ./clover_cli -config <path-to-config>
 
 ## TODO
 
-1. Use default net/http instead of chi
-2. Add URL shortener for static page
+1. Add URL shortener for static page

@@ -7,11 +7,10 @@ import (
 
 	"github.com/eliva1e/clover/internal/assets"
 	"github.com/eliva1e/clover/internal/config"
-	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+	"github.com/eliva1e/clover/internal/middleware"
 )
 
-var cfg config.Config
+var cfg *config.Config
 var tmpl *template.Template
 
 func main() {
@@ -23,12 +22,8 @@ func main() {
 		log.Fatalf("failed to parse templates: %v", err)
 	}
 
-	r := chi.NewRouter()
-	r.Use(middleware.Logger)
-	r.Use(middleware.Recoverer)
-
-	r.Get("/", profileHandler)
-	r.Get("/{symlink}", symlinkHandler)
+	http.HandleFunc("GET /", profileHandler)
+	http.HandleFunc("GET /{symlink}", symlinkHandler)
 
 	if cfg.EnableTls {
 		go func() {
@@ -39,10 +34,15 @@ func main() {
 		}()
 
 		log.Printf("Starting Clover on port 443 (w/ TLS)")
-		log.Fatal(http.ListenAndServeTLS(":443", "server.crt", "server.key", r))
+		log.Fatal(http.ListenAndServeTLS(
+			":443",
+			"server.crt",
+			"server.key",
+			middleware.LoggingMiddleware(http.DefaultServeMux),
+		))
 	} else {
 		log.Printf("Starting Clover on port 80")
-		log.Fatal(http.ListenAndServe(":80", r))
+		log.Fatal(http.ListenAndServe(":80", middleware.LoggingMiddleware(http.DefaultServeMux)))
 	}
 }
 
