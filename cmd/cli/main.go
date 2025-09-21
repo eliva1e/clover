@@ -10,7 +10,7 @@ import (
 
 	_ "embed"
 
-	"github.com/eliva1e/clover/internal"
+	"github.com/eliva1e/clover/internal/config"
 	"github.com/eliva1e/clover/internal/assets"
 )
 
@@ -23,7 +23,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	cfg := internal.LoadConfig(*configPath)
+	cfg := config.LoadConfig(*configPath)
 
 	tmpl, err := template.New("profile").Parse(assets.ProfileTemplate)
 	if err != nil {

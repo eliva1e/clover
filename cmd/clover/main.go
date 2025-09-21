@@ -5,17 +5,17 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/eliva1e/clover/internal"
+	"github.com/eliva1e/clover/internal/config"
 	"github.com/eliva1e/clover/internal/assets"
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
 )
 
-var cfg internal.Config
+var cfg config.Config
 var tmpl *template.Template
 
 func main() {
-	cfg = internal.LoadConfig("config.json")
+	cfg = config.LoadConfig("config.json")
 
 	var err error
 	tmpl, err = template.New("profile").Parse(assets.ProfileTemplate)
