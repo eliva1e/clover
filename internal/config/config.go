@@ -13,6 +13,7 @@ type Object struct {
 	Symlink    string `json:"symlink"`
 	Background string `json:"background"`
 	Foreground string `json:"foreground"`
+	Icon       string `json:"icon"`
 }
 
 type Config struct {

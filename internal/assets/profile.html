@@ -6,6 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>{{.Name}}</title>
 </head>
 <style>
@@ -79,6 +80,7 @@
     border-radius: 8px;
     transition: width 0.3s, opacity 0.3s;
     box-shadow: 5px 5px 10px #cccccc;
+    position: relative;
   }
   .button:hover {
     opacity: 0.9;
@@ -93,6 +95,14 @@
     margin-top: 1rem;
     font-weight: 500;
     letter-spacing: 1px;
+  }
+
+  .fab {
+    position: absolute;
+    left: 0.6rem;
+    font-size: 1.4em;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   @keyframes fade-in {
@@ -139,6 +149,9 @@
           class="button"
           style="background-color: {{.Background}}; color: {{.Foreground}}"
         >
+          {{if .Icon}}
+            <i class="fab fa-{{.Icon}}"></i>
+          {{end}}
           {{.Name}}
         </a>
       {{end}}

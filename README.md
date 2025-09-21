@@ -15,17 +15,19 @@ Typical `config.json` file looks like this:
 ```jsonc
 {
   "address": ":80",
+  "enableTls": false, // put server.crt and server.key in the same folder and change address to :443 to enable TLS
   "avatar": "https://.../avatar.png", // avatar URL
   "name": "My Cool Name",
   "bio": "My Cool Bio",
   "links": [
     // Button example
     {
-      "name": "Some Social",
-      "url": "https://...",
-      "symlink": "some_social", // used in URL shortener. In this example, https://<your-host>/some_social will redirect to a specific URL
+      "name": "Telegram",
+      "url": "https://t.me/...",
+      "symlink": "telegram", // used in URL shortener. In this example, https://<your-host>/telegram will redirect to a specific URL
       "background": "#000", // background color
-      "foreground": "#fff" // text color
+      "foreground": "#fff", // text color
+      "icon": "telegram" // Font Awesome brand icon name
     },
 
     // Label example
@@ -71,6 +73,5 @@ $ ./clover_cli -config <path-to-config>
 
 ## TODO
 
-1. Icons for the buttons
-2. SSL certificate support
-3. Use default net/http instead of chi
+1. Use default net/http instead of chi
+2. Add URL shortener for static page

@@ -1,6 +1,6 @@
 {
-  "address": ":443",
-  "enableTls": true,
+  "address": ":80",
+  "enableTls": false,
   "avatar": "https://github.com/eliva1e.png",
   "name": "Elivale",
   "bio": "i am human",
@@ -14,28 +14,32 @@
       "url": "https://t.me/eliva1e",
       "symlink": "telegram",
       "background": "#24A1DE",
-      "foreground": "#fff"
+      "foreground": "#fff",
+      "icon": "telegram"
     },
     {
       "name": "Bluesky",
       "url": "https://elivale.bsky.social",
       "symlink": "bsky",
       "background": "#01AAFF",
-      "foreground": "#fff"
+      "foreground": "#fff",
+      "icon": "bluesky"
     },
     {
       "name": "GitHub",
       "url": "https://github.com/eliva1e",
       "symlink": "github",
       "background": "#2b3137",
-      "foreground": "#fff"
+      "foreground": "#fff",
+      "icon": "github"
     },
     {
       "name": "YouTube",
       "url": "https://www.youtube.com/@realmisterkirill",
       "symlink": "youtube",
       "background": "#FF0033",
-      "foreground": "#fff"
+      "foreground": "#fff",
+      "icon": "youtube"
     },
     {
       "isLabel": true,
