@@ -39,8 +39,24 @@ Typical `config.json` file looks like this:
 
 ## Run using Docker
 
+_Without TLS:_
+
 ```sh
-$ docker run -d -p 80:80 -v ./config.json:/clover/config.json --name clover eliva1e/clover
+$ docker run -d \
+  -p 80:80 \
+  -v ./config.json:/clover/config.json \
+  --name clover eliva1e/clover
+```
+
+_With TLS:_
+
+```sh
+$ docker run -d \
+  -p 443:443 \
+  -v ./config.json:/clover/config.json \
+  -v ./server.key:/clover/server.key \
+  -v ./server.crt:/clover/server.crt \
+  --name clover eliva1e/clover
 ```
 
 ## Static page

@@ -31,10 +31,10 @@ func main() {
 	r.Get("/{symlink}", symlinkHandler)
 
 	log.Printf("Starting Clover on %s", cfg.Address)
-	if cfg.Tls == nil {
-		log.Fatal(http.ListenAndServe(cfg.Address, r))
+	if cfg.EnableTls {
+		log.Fatal(http.ListenAndServeTLS(cfg.Address, "server.crt", "server.key", r))
 	} else {
-		log.Fatal(http.ListenAndServeTLS(cfg.Address, cfg.Tls.PublicKey, cfg.Tls.PrivateKey, r))
+		log.Fatal(http.ListenAndServe(cfg.Address, r))
 	}
 }
 

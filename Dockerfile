@@ -11,5 +11,5 @@ WORKDIR /clover
 
 COPY --from=builder /usr/src/app/clover .
 
-EXPOSE 80
+EXPOSE 80 443
 CMD ["./clover"]

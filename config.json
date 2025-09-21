@@ -1,9 +1,6 @@
 {
   "address": ":443",
-  "tls": {
-    "publicKey": "./server.crt",
-    "privateKey": "./server.key"
-  },
+  "enableTls": true,
   "avatar": "https://github.com/eliva1e.png",
   "name": "Elivale",
   "bio": "i am human",
