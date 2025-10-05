@@ -18,6 +18,10 @@ Typical `config.json` file looks like this:
   "avatar": "https://.../avatar.png", // avatar URL
   "name": "My Cool Name",
   "bio": "My Cool Bio",
+  "meta": {
+    "title": "my clover page ✨",
+    "description": "hi there!"
+  },
   "links": [
     // Button example
     {
@@ -71,4 +75,4 @@ $ ./clover_cli -config <path-to-config>
 
 ## TODO
 
-1. Better config style
+1. Add JSON schema

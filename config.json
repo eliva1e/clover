@@ -3,6 +3,10 @@
   "avatar": "https://github.com/eliva1e.png",
   "name": "Elivale",
   "bio": "i am human",
+  "meta": {
+    "title": "Elivale ✨",
+    "description": "oh hi there!"
+  },
   "objects": [
     {
       "isLabel": true,

@@ -3,11 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{if .Meta}}
+    {{if .Meta.Title}}
+      <meta name="og:title" content="{{.Meta.Title}}">
+      <title>{{.Meta.Title}}</title>
+    {{else if .Name}}
+      <meta name="og:title" content="{{.Name}}">
+      <title>{{.Name}}</title>
+    {{else}}
+      <meta name="og:title" content="Clover">
+      <title>Clover</title>
+    {{end}}
+
+    {{if .Meta.Description}}
+      <meta name="og:description" content="{{.Meta.Description}}">
+    {{end}}
+  {{else}}
+    <meta name="og:title" content="Clover">
+    <title>Clover</title>
+  {{end}}
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>{{.Name}}</title>
 </head>
 <style>
   body {
@@ -130,12 +148,19 @@
   }
 </style>
 <body>
-  <a href="#">
-    <img src="{{.Avatar}}" alt="{{.Name}}" class="avatar">
-  </a>
+  {{if .Avatar}}
+    <a href="#">
+      <img src="{{.Avatar}}" alt="{{.Name}}" class="avatar">
+    </a>
+  {{end}}
 
-  <h1 class="name">{{.Name}}</h1>
-  <p class="bio">{{.Bio}}</p>
+  {{if .Name}}
+    <h1 class="name">{{.Name}}</h1>
+  {{end}}
+
+  {{if .Bio}}
+    <p class="bio">{{.Bio}}</p>
+  {{end}}
 
   <div class="objects">
     {{range .Objects}}

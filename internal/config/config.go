@@ -16,12 +16,18 @@ type Object struct {
 	Icon       string `json:"icon"`
 }
 
+type MetaConfig struct {
+	Title       *string `json:"title"`
+	Description *string `json:"description"`
+}
+
 type Config struct {
-	EnableTls bool     `json:"enableTls"`
-	Avatar    string   `json:"avatar"`
-	Name      string   `json:"name"`
-	Bio       string   `json:"bio"`
-	Objects   []Object `json:"objects"`
+	EnableTls bool        `json:"enableTls"`
+	Avatar    *string     `json:"avatar"`
+	Name      *string     `json:"name"`
+	Bio       *string     `json:"bio"`
+	Objects   []Object    `json:"objects"`
+	Meta      *MetaConfig `json:"meta"`
 }
 
 func LoadConfig(path string) *Config {
