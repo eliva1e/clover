@@ -6,8 +6,8 @@ import (
 	"html/template"
 	"os"
 
-	"github.com/eliva1e/clover/internal/config"
 	"github.com/eliva1e/clover/internal/assets"
+	"github.com/eliva1e/clover/internal/config"
 )
 
 func exitLog(format string, a ...any) {
@@ -16,6 +16,10 @@ func exitLog(format string, a ...any) {
 }
 
 func main() {
+	if len(os.Args) < 2 {
+		exitLog("Usage: %v <path-to-config>\n", os.Args[0])
+	}
+
 	configPath := os.Args[1]
 
 	if configPath == "" {
@@ -49,7 +53,7 @@ func main() {
 
 	for _, obj := range cfg.Objects {
 		if !obj.IsLabel {
-			if err = os.MkdirAll("dist/" + obj.Symlink, os.ModePerm); err != nil {
+			if err = os.MkdirAll("dist/"+obj.Symlink, os.ModePerm); err != nil {
 				exitLog("failed to create directory: %v", err)
 			}
 
@@ -59,7 +63,7 @@ func main() {
 			}
 
 			if err = os.WriteFile(
-				"dist/" + obj.Symlink + "/index.html",
+				"dist/"+obj.Symlink+"/index.html",
 				redirectHtml.Bytes(),
 				0644,
 			); err != nil {
