@@ -25,6 +25,7 @@ Typical `config.json` file looks like this:
   "links": [
     // Button example
     {
+      "type": "button",
       "name": "Telegram",
       "url": "https://t.me/...",
       "symlink": "telegram", // used in URL shortener. In this example, https://<your-host>/telegram will redirect to a specific URL
@@ -35,7 +36,7 @@ Typical `config.json` file looks like this:
 
     // Label example
     {
-      "isLabel": true,
+      "type": "label",
       "name": "MUSIC"
     }
   ]
@@ -72,7 +73,3 @@ Download the latest Clover CLI from [Releases](https://github.com/eliva1e/clover
 ```sh
 $ ./clover_cli -config <path-to-config>
 ```
-
-## TODO
-
-1. Add JSON schema

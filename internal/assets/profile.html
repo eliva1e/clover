@@ -164,7 +164,7 @@
 
   <div class="objects">
     {{range .Objects}}
-      {{if .IsLabel}}
+      {{if eq .Type "label"}}
         <span class="label">{{.Name}}</span>
       {{else}}
         <a

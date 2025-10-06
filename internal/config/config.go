@@ -7,7 +7,7 @@ import (
 )
 
 type Object struct {
-	IsLabel    bool   `json:"isLabel"`
+	Type       string `json:"type"`
 	Name       string `json:"name"`
 	Url        string `json:"url"`
 	Symlink    string `json:"symlink"`
