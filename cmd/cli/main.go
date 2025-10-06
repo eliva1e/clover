@@ -52,7 +52,7 @@ func main() {
 	}
 
 	for _, obj := range cfg.Objects {
-		if obj.Type == "label" {
+		if obj.Type == "button" {
 			if err = os.MkdirAll("dist/"+obj.Symlink, os.ModePerm); err != nil {
 				exitLog("failed to create directory: %v", err)
 			}
