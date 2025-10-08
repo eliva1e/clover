@@ -72,5 +72,5 @@ You can generate static HTML page to use it in any hosting service (e.g. Vercel,
 Download the latest Clover CLI from [Releases](https://github.com/eliva1e/clover/releases) and run:
 
 ```sh
-$ ./clover_cli -config <path-to-config>
+$ ./clover_cli <path-to-config>
 ```
