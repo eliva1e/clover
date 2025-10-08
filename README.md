@@ -18,6 +18,7 @@ Typical `config.json` file looks like this:
   "avatar": "https://.../avatar.png", // avatar URL
   "name": "My Cool Name",
   "bio": "My Cool Bio",
+  "background": "https://.../background.png", // (optional) background image URL
   "meta": {
     "title": "my clover page ✨",
     "description": "hi there!"
